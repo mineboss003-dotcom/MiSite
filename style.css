@@ -1,113 +1,256 @@
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-}
 
-/* Первая страница */
-.start-screen{
-    width:100%;
-    height:100vh;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 
-    background:url("background.jpg") center center no-repeat;
-    background-size:cover;
+overflow:hidden;
 
-    position:relative;
-}
+font-family:Arial,sans-serif;
 
-/* Невидимая кнопка поверх красивой */
-.start-btn{
-    position:absolute;
-
-    left:50%;
-    top:66%;
-
-    transform:translate(-50%,-50%);
-
-    width:260px;
-    height:90px;
-
-    cursor:pointer;
-}
-
-/* ---------- Телефон ---------- */
-
-@media (max-width:768px){
-
-.start-screen{
-
-    background:url("background.jpg") center center no-repeat;
-    background-size:cover;
+background:url("forest.jpg") center center/cover no-repeat fixed;
 
 }
 
-.start-btn{
+/* затемнение */
 
-    width:180px;
-    height:65px;
+.overlay{
 
-    top:68%;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(3px);
+
+z-index:1;
+
+}
+
+/* стекло */
+
+.glass{
+
+position:relative;
+z-index:5;
+
+width:700px;
+max-width:90%;
+
+padding:60px;
+
+border-radius:35px;
+
+background:rgba(255,255,255,.12);
+
+border:2px solid rgba(255,255,255,.35);
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+
+0 0 30px rgba(255,180,230,.5),
+
+0 0 80px rgba(255,120,200,.25);
+
+text-align:center;
+
+}
+
+/* заголовок */
+
+.glass h1{
+
+font-size:64px;
+
+color:white;
+
+text-shadow:
+
+0 0 10px white,
+
+0 0 25px pink,
+
+0 0 50px hotpink;
+
+animation:glow 3s infinite alternate;
+
+}
+
+/* текст */
+
+.glass p{
+
+margin-top:25px;
+
+font-size:28px;
+
+color:white;
+
+text-shadow:0 0 12px pink;
+
+}
+
+/* кнопка */
+
+.btn{
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:18px 55px;
+
+font-size:24px;
+
+text-decoration:none;
+
+color:white;
+
+border-radius:50px;
+
+background:linear-gradient(45deg,#ff4fa3,#ff86d2);
+
+box-shadow:
+
+0 0 20px #ff4fa3,
+
+0 0 45px #ff7ac8;
+
+transition:.4s;
+
+}
+
+.btn:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+
+0 0 35px #ff4fa3,
+
+0 0 70px #ff7ac8;
+
+}
+
+/* лепестки */
+
+#petals{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+z-index:3;
+
+overflow:hidden;
+
+}
+
+.petal{
+
+position:absolute;
+
+background:#ffb6d9;
+
+width:18px;
+
+height:18px;
+
+border-radius:15px 15px 0 15px;
+
+opacity:.8;
+
+animation:fall linear forwards;
+
+}
+
+@keyframes fall{
+
+from{
+
+transform:translateY(-50px) rotate(0deg);
+
+}
+
+to{
+
+transform:translateY(110vh) rotate(360deg);
+
 }
 
 }
 
-/* =======================
-   Адаптация под телефон
-======================= */
+@keyframes glow{
 
-@media (max-width: 768px){
+from{
 
-    .content{
-        width:90%;
-        padding:35px 20px;
-        border-radius:25px;
-    }
+text-shadow:
 
-    .content h1{
-        font-size:34px;
-        line-height:1.3;
-    }
+0 0 10px white,
 
-    .content p{
-        font-size:18px;
-        margin-top:15px;
-        margin-bottom:30px;
-    }
+0 0 20px pink,
 
-    .btn{
-        font-size:22px;
-        padding:15px 50px;
-        border-radius:35px;
-    }
+0 0 40px hotpink;
 
 }
 
-@media (max-width:480px){
+to{
 
-    .content{
-        width:95%;
-        padding:25px 15px;
-    }
+text-shadow:
 
-    .content h1{
-        font-size:28px;
-    }
+0 0 20px white,
 
-    .content p{
-        font-size:16px;
-    }
+0 0 40px #ff7ac8,
 
-    .btn{
-        width:100%;
-        display:block;
-        padding:16px 0;
-        font-size:20px;
-    }
+0 0 70px #ff4fa3;
 
 }
+
+}
+
+/* телефон */
+
+max-width
+
+.glass{
+
+width:92%;
+
+padding:35px;
+
+}
+
+.glass h1{
+
+font-size:38px;
+
+}
+
+.glass p{
+
+font-size:20px;
+
+}
+
+.btn{
+
+font-size:20px;
+
+padding:15px 40px;
+
+}
+
