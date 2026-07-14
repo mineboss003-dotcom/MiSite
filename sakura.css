@@ -150,3 +150,93 @@ body{
         transform: translate(-50%,-250px) scale(2);
     }
 }
+.moon{
+    position:fixed;
+    top:60px;
+    right:80px;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+    background:radial-gradient(circle,#fffdf0,#ffe8b5);
+
+    box-shadow:
+        0 0 40px #fff,
+        0 0 90px #fff5c4,
+        0 0 150px #fff0a0;
+
+    z-index:-1;
+}.tree{
+    position:fixed;
+    left:0;
+    bottom:0;
+
+    width:420px;
+
+    z-index:0;
+    pointer-events:none;
+}
+.message{
+    position:fixed;
+
+    top:18%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+    font-size:42px;
+    font-weight:bold;
+
+    text-shadow:
+        0 0 20px pink,
+        0 0 40px hotpink;
+
+    opacity:0;
+
+    animation:showText 4s ease forwards;
+    animation-delay:2s;
+
+    z-index:15;
+}
+
+@keyframes showText{
+
+0%{
+opacity:0;
+transform:translateX(-50%) translateY(-20px);
+}
+
+100%{
+opacity:1;
+transform:translateX(-50%) translateY(0);
+}
+
+}
+.flash{
+
+position:fixed;
+inset:0;
+
+background:white;
+
+animation:flash 2s forwards;
+
+pointer-events:none;
+
+z-index:100;
+
+}
+
+@keyframes flash{
+
+0%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+}
+
+}
