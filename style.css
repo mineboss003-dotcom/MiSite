@@ -137,4 +137,9 @@ body{
         padding:16px 45px;
     }
 
+}.background{
+    position:fixed;
+    inset:0;
+    background:url("welcome.jpg") center center/cover no-repeat;
+    z-index:-3;
 }
