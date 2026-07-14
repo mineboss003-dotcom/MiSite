@@ -1,181 +1,162 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-
-overflow:hidden;
-
-font-family:Arial,sans-serif;
-
-background:url("forest.jpg") center center/cover no-repeat fixed;
-
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Georgia", serif;
 }
 
-/* затемнение */
-
-.overlay{
-
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-
-background:rgba(0,0,0,.35);
-backdrop-filter:blur(3px);
-
-z-index:1;
-
+body {
+    background: url("forest.jpg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-/* стекло */
-
-.glass{
-
-position:relative;
-z-index:5;
-
-width:700px;
-max-width:90%;
-
-padding:60px;
-
-border-radius:35px;
-
-background:rgba(255,255,255,.12);
-
-border:2px solid rgba(255,255,255,.35);
-
-backdrop-filter:blur(18px);
-
-box-shadow:
-
-0 0 30px rgba(255,180,230,.5),
-
-0 0 80px rgba(255,120,200,.25);
-
-text-align:center;
-
+/* Затемнение */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.35);
 }
 
-/* заголовок */
-
-.glass h1{
-
-font-size:64px;
-
-color:white;
-
-text-shadow:
-
-0 0 10px white,
-
-0 0 25px pink,
-
-0 0 50px hotpink;
-
-animation:glow 3s infinite alternate;
-
+/* Туман */
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255,255,255,.15), transparent 70%);
+    animation: fog 12s ease-in-out infinite alternate;
 }
 
-/* текст */
+@keyframes fog {
+    from{
+        transform: scale(1);
+        opacity:.5;
+    }
 
-.glass p{
-
-margin-top:25px;
-
-font-size:28px;
-
-color:white;
-
-text-shadow:0 0 12px pink;
-
+    to{
+        transform: scale(1.15);
+        opacity:.9;
+    }
 }
 
-/* кнопка */
+.content{
+    position: relative;
+    z-index: 10;
+
+    width: 700px;
+    padding: 60px;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(15px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    box-shadow:
+    0 0 25px rgba(255,180,220,.6),
+    inset 0 0 15px rgba(255,255,255,.15);
+}
+
+.content h1{
+
+    color:white;
+    font-size:64px;
+
+    text-shadow:
+    0 0 10px white,
+    0 0 25px hotpink,
+    0 0 45px deeppink;
+
+    margin-bottom:25px;
+}
+
+.content p{
+
+    color:white;
+    font-size:28px;
+
+    margin-bottom:40px;
+
+    text-shadow:0 0 10px black;
+}
 
 .btn{
 
-display:inline-block;
+    display:inline-block;
 
-margin-top:40px;
+    padding:18px 60px;
 
-padding:18px 55px;
+    background:linear-gradient(45deg,#ff4fa3,#ff86d2);
 
-font-size:24px;
+    color:white;
 
-text-decoration:none;
+    text-decoration:none;
 
-color:white;
+    border-radius:40px;
 
-border-radius:50px;
+    font-size:24px;
 
-background:linear-gradient(45deg,#ff4fa3,#ff86d2);
+    font-weight:bold;
 
-box-shadow:
+    box-shadow:
+    0 0 20px #ff4fa3,
+    0 0 40px hotpink;
 
-0 0 20px #ff4fa3,
-
-0 0 45px #ff7ac8;
-
-transition:.4s;
-
+    transition:.3s;
 }
 
 .btn:hover{
 
-transform:scale(1.08);
+    transform:scale(1.08);
 
-box-shadow:
-
-0 0 35px #ff4fa3,
-
-0 0 70px #ff7ac8;
-
+    box-shadow:
+    0 0 35px #ff4fa3,
+    0 0 70px hotpink;
 }
 
-/* лепестки */
+.petals{
 
-#petals{
+    position:fixed;
 
-position:fixed;
+    top:0;
+    left:0;
 
-width:100%;
+    width:100%;
+    height:100%;
 
-height:100%;
+    pointer-events:none;
 
-pointer-events:none;
-
-z-index:3;
-
-overflow:hidden;
-
+    overflow:hidden;
 }
 
 .petal{
 
-position:absolute;
+    position:absolute;
 
-background:#ffb6d9;
+    width:18px;
+    height:18px;
 
-width:18px;
+    background:#ffb7d5;
 
-height:18px;
+    border-radius:18px 18px 0 18px;
 
-border-radius:15px 15px 0 15px;
+    opacity:.8;
 
-opacity:.8;
-
-animation:fall linear forwards;
-
+    animation:fall linear forwards;
 }
 
 @keyframes fall{
@@ -191,66 +172,29 @@ to{
 transform:translateY(110vh) rotate(360deg);
 
 }
-
 }
 
-@keyframes glow{
+/* Телефон */
+@media (max-width: 768px) {
 
-from{
+    .content {
+        width: 90%;
+        padding: 30px;
+    }
 
-text-shadow:
+    .content h1 {
+        font-size: 38px;
+    }
 
-0 0 10px white,
+    .content p {
+        font-size: 20px;
+    }
 
-0 0 20px pink,
+    .btn {
+        font-size: 20px;
+        padding: 15px 40px;
+    }
 
-0 0 40px hotpink;
-
+}body {
+    background: url("images/forest.jpg") center center / cover no-repeat fixed;
 }
-
-to{
-
-text-shadow:
-
-0 0 20px white,
-
-0 0 40px #ff7ac8,
-
-0 0 70px #ff4fa3;
-
-}
-
-}
-
-/* телефон */
-
-max-width
-
-.glass{
-
-width:92%;
-
-padding:35px;
-
-}
-
-.glass h1{
-
-font-size:38px;
-
-}
-
-.glass p{
-
-font-size:20px;
-
-}
-
-.btn{
-
-font-size:20px;
-
-padding:15px 40px;
-
-}
-
