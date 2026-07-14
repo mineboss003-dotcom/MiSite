@@ -5,160 +5,109 @@
 }
 
 body{
+    width:100%;
+    height:100vh;
     overflow:hidden;
-    font-family:Georgia, serif;
 }
 
-.background{
-    position:fixed;
-    inset:0;
+/* Первая страница */
+.start-screen{
+    width:100%;
+    height:100vh;
 
-    background:url("assets/sakura.webp.jpg") center center/cover no-repeat;
+    background:url("background.jpg") center center no-repeat;
+    background-size:cover;
 
-    z-index:-2;
+    position:relative;
 }
 
-.petals{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-}
-
-.petal{
-
+/* Невидимая кнопка поверх красивой */
+.start-btn{
     position:absolute;
 
-    width:18px;
-    height:18px;
+    left:50%;
+    top:66%;
 
-    background:#ffb6c1;
+    transform:translate(-50%,-50%);
 
-    border-radius:18px 0 18px 0;
+    width:260px;
+    height:90px;
 
-    opacity:.85;
-
-    animation:fall linear forwards;
+    cursor:pointer;
 }
 
-@keyframes fall{
+/* ---------- Телефон ---------- */
 
-from{
-transform:translateY(-30px) rotate(0deg);
-}
+@media (max-width:768px){
 
-to{
-transform:translateY(110vh) translateX(150px) rotate(360deg);
-}
+.start-screen{
 
-}
-
-.glass{
-
-position:absolute;
-
-top:50%;
-left:50%;
-
-transform:translate(-50%,-50%);
-
-width:760px;
-
-padding:60px;
-
-text-align:center;
-
-background:rgba(255,255,255,.12);
-
-backdrop-filter:blur(18px);
-
-border-radius:35px;
-
-border:2px solid rgba(255,255,255,.35);
-
-box-shadow:
-0 0 40px rgba(255,170,220,.6);
+    background:url("background.jpg") center center no-repeat;
+    background-size:cover;
 
 }
 
-.glass h1{
+.start-btn{
 
-font-size:64px;
+    width:180px;
+    height:65px;
 
-color:white;
-
-text-shadow:
-
-0 0 10px white,
-0 0 20px pink,
-0 0 40px hotpink;
-
-animation:glow 3s infinite alternate;
-}
-
-.glass p{
-
-margin-top:35px;
-
-font-size:32px;
-
-color:white;
-
-}
-
-@keyframes glow{
-
-from{
-
-text-shadow:
-
-0 0 10px white,
-0 0 20px pink,
-0 0 40px hotpink;
-
-}
-
-to{
-
-text-shadow:
-
-0 0 20px white,
-0 0 40px #ff7ac8,
-0 0 70px #ff4fa3;
-
+    top:68%;
 }
 
 }
 
-.btn{
+/* =======================
+   Адаптация под телефон
+======================= */
 
-display:inline-block;
+@media (max-width: 768px){
 
-margin-top:45px;
+    .content{
+        width:90%;
+        padding:35px 20px;
+        border-radius:25px;
+    }
 
-padding:18px 80px;
+    .content h1{
+        font-size:34px;
+        line-height:1.3;
+    }
 
-border-radius:50px;
+    .content p{
+        font-size:18px;
+        margin-top:15px;
+        margin-bottom:30px;
+    }
 
-background:linear-gradient(#ff4fa3,#ff7ac8);
-
-color:white;
-
-font-size:28px;
-
-text-decoration:none;
-
-font-weight:bold;
-
-box-shadow:0 0 25px #ff4fa3;
-
-transition:.35s;
+    .btn{
+        font-size:22px;
+        padding:15px 50px;
+        border-radius:35px;
+    }
 
 }
 
-.btn:hover{
+@media (max-width:480px){
 
-transform:scale(1.08);
+    .content{
+        width:95%;
+        padding:25px 15px;
+    }
 
-box-shadow:0 0 45px #ff4fa3;
+    .content h1{
+        font-size:28px;
+    }
+
+    .content p{
+        font-size:16px;
+    }
+
+    .btn{
+        width:100%;
+        display:block;
+        padding:16px 0;
+        font-size:20px;
+    }
 
 }
