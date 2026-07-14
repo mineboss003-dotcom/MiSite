@@ -1,23 +1,35 @@
-const petals = document.getElementById("petals");
+document.addEventListener("click", function(e){
 
-for(let i=0;i<70;i++){
+    const heart = document.createElement("div");
 
-const petal=document.createElement("div");
+    heart.innerHTML = "💖";
 
-petal.className="petal";
+    heart.className = "heart";
 
-petal.style.left=Math.random()*100+"vw";
+    heart.style.left = e.pageX + "px";
+    heart.style.top = e.pageY + "px";
 
-petal.style.top=-Math.random()*100+"px";
+    document.body.appendChild(heart);
 
-petal.style.width=(12+Math.random()*12)+"px";
+    setTimeout(()=>{
+        heart.remove();
+    },2000);
 
-petal.style.height=petal.style.width;
+});
+const stars = document.getElementById("stars");
 
-petal.style.animationDuration=(6+Math.random()*6)+"s";
+for(let i=0;i<120;i++){
 
-petal.style.animationDelay=(Math.random()*6)+"s";
+    const star=document.createElement("div");
 
-petals.appendChild(petal);
+    star.className="star";
+
+    star.style.left=Math.random()*100+"%";
+
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDelay=Math.random()*2+"s";
+
+    stars.appendChild(star);
 
 }

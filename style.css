@@ -9,13 +9,13 @@ body{
     font-family:Arial, sans-serif;
 }
 
-/* Фон */
 .background{
-    position:fixed;
-    inset:0;
-    background:url("welcome.jpg") center center/cover no-repeat;
-    z-index:-3;
+    position: fixed;
+    inset: 0;
+    background: url("assets/welcome.jpg") center/cover no-repeat;
+    z-index: -2;
 }
+
 
 /* Затемнение */
 .overlay{
@@ -142,4 +142,47 @@ body{
     inset:0;
     background:url("welcome.jpg") center center/cover no-repeat;
     z-index:-3;
+}
+body{
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}.heart{
+
+    position:absolute;
+
+    font-size:30px;
+
+    pointer-events:none;
+
+    animation:heartFly 2s linear forwards;
+
+}
+
+@keyframes heartFly{
+
+    from{
+
+        opacity:1;
+
+        transform:translate(-50%,-50%) scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:translate(-50%,-250px) scale(2);
+
+    }
+
 }
