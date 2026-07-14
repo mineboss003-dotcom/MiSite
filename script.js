@@ -1,61 +1,23 @@
-
-// ===============================
-// МУЗЫКА
-// ===============================
-
-const audio = document.getElementById("bgMusic");
-
-let musicStarted = false;
-
-function startMusic(){
-
-    if(musicStarted) return;
-
-    musicStarted = true;
-
-    audio.volume = 0.4;
-
-    audio.play().catch(()=>{});
-
-}
-
-document.addEventListener("click",startMusic,{once:true});
-document.addEventListener("touchstart",startMusic,{once:true});
-document.addEventListener("keydown",startMusic,{once:true});
-
-// ===============================
-// ЛЕПЕСТКИ
-// ===============================
-
 const petals = document.getElementById("petals");
 
-function createPetal(){
+for(let i=0;i<70;i++){
 
-    const petal = document.createElement("div");
+const petal=document.createElement("div");
 
-    petal.className = "petal";
+petal.className="petal";
 
-    petal.style.left = Math.random()*window.innerWidth+"px";
+petal.style.left=Math.random()*100+"vw";
 
-    petal.style.top = "-40px";
+petal.style.top=-Math.random()*100+"px";
 
-    petal.style.animationDuration =
-        (8 + Math.random()*8) + "s";
+petal.style.width=(12+Math.random()*12)+"px";
 
-    petal.style.opacity =
-        0.5 + Math.random()*0.5;
+petal.style.height=petal.style.width;
 
-    petal.style.transform =
-        `scale(${0.5 + Math.random()})`;
+petal.style.animationDuration=(6+Math.random()*6)+"s";
 
-    petals.appendChild(petal);
+petal.style.animationDelay=(Math.random()*6)+"s";
 
-    petal.addEventListener("animationend",()=>{
-
-        petal.remove();
-
-    });
+petals.appendChild(petal);
 
 }
-
-setInterval(createPetal,250);
