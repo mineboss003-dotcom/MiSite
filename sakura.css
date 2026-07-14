@@ -104,4 +104,49 @@ body{
         padding:15px 40px;
     }
 
+}#stars{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.star{
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    animation: blink 2s infinite alternate;
+}
+
+@keyframes blink{
+    from{
+        opacity: .2;
+        transform: scale(.5);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+.heart{
+    position: absolute;
+    font-size: 30px;
+    pointer-events: none;
+    animation: heartFly 2s linear forwards;
+    z-index: 20;
+}
+
+@keyframes heartFly{
+    from{
+        opacity: 1;
+        transform: translate(-50%,-50%);
+    }
+    to{
+        opacity: 0;
+        transform: translate(-50%,-250px) scale(2);
+    }
 }
