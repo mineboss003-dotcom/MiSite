@@ -47,3 +47,18 @@ if (stars) {
     }
 
 }
+// Плавный переход между страницами
+const btn = document.querySelector(".btn");
+
+if (btn) {
+    btn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const fade = document.getElementById("fade");
+        fade.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = "love.html";
+        }, 800);
+    });
+}
