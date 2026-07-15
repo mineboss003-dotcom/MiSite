@@ -96,3 +96,24 @@ document.addEventListener("click", () => {
         music.play().catch(err => console.log(err));
     }
 }, { once: true });
+// ===== Светлячки =====
+const fireflies = document.getElementById("fireflies");
+
+if (fireflies) {
+
+    for (let i = 0; i < 30; i++) {
+
+        const firefly = document.createElement("div");
+
+        firefly.className = "firefly";
+
+        firefly.style.left = Math.random() * 100 + "%";
+        firefly.style.top = Math.random() * 100 + "%";
+
+        firefly.style.animationDuration = (2 + Math.random() * 3) + "s";
+        firefly.style.animationDelay = (Math.random() * 5) + "s";
+
+        fireflies.appendChild(firefly);
+    }
+
+}
