@@ -6,200 +6,104 @@
 
 body{
     overflow:hidden;
-    font-family:Arial, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 .background{
-    position: fixed;
-    inset: 0;
-    background: url("assets/welcome.jpg") center/cover no-repeat;
-    z-index: -2;
+    position:fixed;
+    inset:0;
+    background:url("images/welcome.jpg") center center/cover no-repeat;
+    z-index:-2;
 }
 
-
-/* Затемнение */
 .overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.35);
-    z-index:-2;
+    z-index:-1;
 }
 
-/* Лепестки */
-#petals{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:2;
-}
-
-.petal{
-    position:absolute;
-    width:18px;
-    height:18px;
-    background:#ffb6d5;
-    border-radius:18px 0 18px 0;
-    opacity:.8;
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-    from{
-        transform:translateY(-40px) rotate(0deg);
-    }
-
-    to{
-        transform:translateY(110vh) translateX(120px) rotate(360deg);
-    }
-}
-
-/* Центральная карточка */
-.menu{
+.content{
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:700px;
-    max-width:90%;
-    padding:60px;
     text-align:center;
-
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(18px);
-
-    border:2px solid rgba(255,255,255,.3);
-    border-radius:35px;
-
-    box-shadow:0 0 50px rgba(255,170,220,.6);
+    color:white;
+    animation:fadeIn 2s ease;
 }
 
-/* Заголовок */
-.menu h1{
-    color:white;
-    font-size:60px;
+h1{
+    font-size:70px;
     text-shadow:
-    0 0 15px #fff,
-    0 0 35px #ff6fd8,
-    0 0 60px #ff4fa3;
+        0 0 10px #fff,
+        0 0 30px #ffb6c1;
 }
 
-/* Текст */
-.menu p{
-    color:white;
-    font-size:28px;
-    margin-top:25px;
+p{
+    margin-top:20px;
+    font-size:24px;
+    color:#ffe6f2;
 }
 
-/* Кнопка */
 .btn{
     display:inline-block;
-    margin-top:45px;
-    padding:18px 70px;
-
-    color:white;
+    margin-top:40px;
+    padding:16px 45px;
     text-decoration:none;
-    font-size:28px;
-    font-weight:bold;
-
+    color:white;
+    font-size:22px;
     border-radius:50px;
-
-    background:linear-gradient(#ff4fa3,#ff7ac8);
-
-    box-shadow:0 0 25px #ff4fa3;
-
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.4);
+    backdrop-filter:blur(10px);
     transition:.3s;
 }
 
 .btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 45px #ff4fa3;
+    transform:scale(1.05);
+    background:rgba(255,182,193,.35);
+    box-shadow:0 0 25px pink;
 }
 
-/* Телефон */
-@media (max-width:768px){
-
-    .menu{
-        width:90%;
-        padding:35px;
-    }
-
-    .menu h1{
-        font-size:38px;
-    }
-
-    .menu p{
-        font-size:22px;
-    }
-
-    .btn{
-        font-size:22px;
-        padding:16px 45px;
-    }
-
-}.background{
+#fade{
     position:fixed;
     inset:0;
-    background:url("welcome.jpg") center center/cover no-repeat;
-    z-index:-3;
+    background:black;
+    opacity:0;
+    pointer-events:none;
+    transition:.8s;
+    z-index:9999;
 }
-body{
-    animation: fadeIn 1.5s ease;
+
+#fade.active{
+    opacity:1;
 }
 
 @keyframes fadeIn{
     from{
         opacity:0;
+        transform:translate(-50%,-45%);
     }
-
     to{
         opacity:1;
+        transform:translate(-50%,-50%);
     }
-}.heart{
-
-    position:absolute;
-
-    font-size:30px;
-
-    pointer-events:none;
-
-    animation:heartFly 2s linear forwards;
-
 }
 
-@keyframes heartFly{
+@media (max-width:768px){
 
-    from{
-
-        opacity:1;
-
-        transform:translate(-50%,-50%) scale(1);
-
+    h1{
+        font-size:42px;
     }
 
-    to{
-
-        opacity:0;
-
-        transform:translate(-50%,-250px) scale(2);
-
+    p{
+        font-size:18px;
     }
 
-}
-/* Затемнение экрана */
-#fade{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .8s ease;
-    z-index: 9999;
-}
+    .btn{
+        padding:14px 35px;
+        font-size:18px;
+    }
 
-#fade.active{
-    opacity: 1;
 }

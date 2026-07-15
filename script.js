@@ -1,20 +1,22 @@
-// ===== Запуск музыки =====
+// ---------------- Музыка ----------------
+
 const music = document.getElementById("bgMusic");
 
 document.addEventListener("click", () => {
-    if (music && music.paused) {
-        music.play().catch(err => console.log(err));
+    if (music) {
+        music.play().catch(() => {});
     }
 }, { once: true });
 
 
-// ===== Сердечки при клике =====
+// ---------------- Сердечки ----------------
+
 document.addEventListener("click", function (e) {
 
     const heart = document.createElement("div");
 
-    heart.innerHTML = "❤️";
     heart.className = "heart";
+    heart.innerHTML = "❤️";
 
     heart.style.left = e.pageX + "px";
     heart.style.top = e.pageY + "px";
@@ -24,10 +26,12 @@ document.addEventListener("click", function (e) {
     setTimeout(() => {
         heart.remove();
     }, 2000);
+
 });
 
 
-// ===== Создание звёзд =====
+// ---------------- Звёзды ----------------
+
 const stars = document.getElementById("stars");
 
 if (stars) {
@@ -47,73 +51,37 @@ if (stars) {
     }
 
 }
-// Плавный переход между страницами
+
+
+// ---------------- Переход между страницами ----------------
+
 const btn = document.querySelector(".btn");
 
 if (btn) {
+
     btn.addEventListener("click", function (e) {
+
         e.preventDefault();
 
         const fade = document.getElementById("fade");
-        fade.classList.add("active");
 
-        setTimeout(() => {
-            window.location.href = "love.html";
-        }, 800);
+        if (fade) {
+
+            fade.classList.add("active");
+
+            setTimeout(() => {
+
+                window.location = btn.href;
+
+            }, 800);
+
+        } else {
+
+            window.location = btn.href;
+
+        }
+
     });
-}
-// ===== Светлячки =====
-
-const fireflies = document.getElementById("fireflies");
-
-if (fireflies) {
-
-    for (let i = 0; i < 35; i++) {
-
-        const firefly = document.createElement("div");
-
-        firefly.className = "firefly";
-
-        firefly.style.left = Math.random() * window.innerWidth + "px";
-        firefly.style.top = Math.random() * window.innerHeight + "px";
-
-        firefly.style.animationDuration =
-            (8 + Math.random() * 8) + "s, " +
-            (1.5 + Math.random()) + "s";
-
-        firefly.style.animationDelay =
-            Math.random() * 5 + "s";
-
-        fireflies.appendChild(firefly);
-
-    }
 
 }
-const music = document.getElementById("bgMusic");
-
-document.addEventListener("click", () => {
-    if (music) {
-        music.play().catch(err => console.log(err));
-    }
-}, { once: true });
-// ===== Светлячки =====
-const fireflies = document.getElementById("fireflies");
-
-if (fireflies) {
-
-    for (let i = 0; i < 30; i++) {
-
-        const firefly = document.createElement("div");
-
-        firefly.className = "firefly";
-
-        firefly.style.left = Math.random() * 100 + "%";
-        firefly.style.top = Math.random() * 100 + "%";
-
-        firefly.style.animationDuration = (2 + Math.random() * 3) + "s";
-        firefly.style.animationDelay = (Math.random() * 5) + "s";
-
-        fireflies.appendChild(firefly);
-    }
-
-}
+``

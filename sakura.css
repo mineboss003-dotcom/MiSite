@@ -1,296 +1,425 @@
-body{
+/* ===========================
+   ОСНОВНЫЕ НАСТРОЙКИ
+=========================== */
+
+*{
     margin:0;
-    overflow:hidden;
-    font-family:Arial,sans-serif;
-    background:#000;
-}
-.background{
-    position: fixed;
-    inset: 0;
-    background: url("images/welcome.jpg") center center/cover no-repeat;
-    z-index: -2;
+    padding:0;
+    box-sizing:border-box;
 }
 
-#petals{
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#000;
+}
+
+/* ===========================
+   ФОН
+=========================== */
+
+.background{
     position:fixed;
     inset:0;
+    background:url("images/welcome.jpg") center center/cover no-repeat;
+    z-index:-10;
+}
+
+.background::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+}
+
+/* ===========================
+   ЛУНА
+=========================== */
+
+.moon{
+
+    position:fixed;
+
+    top:60px;
+    right:80px;
+
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle at 35% 35%,
+    #ffffff,
+    #fff3c9 70%,
+    #ffe8a1);
+
+    box-shadow:
+    0 0 30px #fff,
+    0 0 80px rgba(255,255,220,.7),
+    0 0 150px rgba(255,255,220,.4);
+
+    animation:moon 5s ease-in-out infinite;
+
+    z-index:2;
+
+}
+
+@keyframes moon{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+}
+
+/* ===========================
+   ДЕРЕВО
+=========================== */
+
+.tree{
+
+    position:fixed;
+
+    left:0;
+    bottom:0;
+
+    height:90vh;
+
+    z-index:2;
+
+    user-select:none;
     pointer-events:none;
+
+}
+
+/* ===========================
+   СООБЩЕНИЕ
+=========================== */
+
+.message{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    color:white;
+
+    text-align:center;
+
+    font-size:58px;
+
+    text-shadow:
+    0 0 10px white,
+    0 0 30px pink;
+
+    animation:fadeText 3s ease;
+
+    z-index:5;
+
+}
+
+@keyframes fadeText{
+
+from{
+
+opacity:0;
+
+transform:translate(-50%,-40%);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translate(-50%,-50%);
+
+}
+
+}
+
+/* ===========================
+   ЛЕПЕСТКИ
+=========================== */
+
+#petals{
+
+    position:fixed;
+
+    inset:0;
+
     overflow:hidden;
-    z-index:1;
+
+    pointer-events:none;
+
+    z-index:3;
+
 }
 
 .petal{
+
     position:absolute;
-    width:18px;
-    height:18px;
-    background:#ffb6c1;
-    border-radius:18px 0 18px 0;
-    opacity:.8;
-    animation:fall linear forwards;
+
+    top:-30px;
+
+    border-radius:70% 0 70% 0;
+
+    background:#ffc7d8;
+
+    opacity:.9;
+
+    animation:fall linear infinite;
+
 }
 
 @keyframes fall{
-    from{
-        transform:translateY(-30px) rotate(0deg);
-    }
 
-    to{
-        transform:translateY(110vh) translateX(120px) rotate(360deg);
-    }
+0%{
+
+transform:
+translateY(-30px)
+rotate(0deg);
+
 }
 
-.menu{
-    position: absolute;
-    z-index: 10;
+100%{
+
+transform:
+translateY(120vh)
+translateX(120px)
+rotate(360deg);
+
+}
+
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    background:url("images/welcome.jpg") center center/cover no-repeat;
+    z-index:-2;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:-1;
+}
+
+.content{
     position:absolute;
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
     text-align:center;
     color:white;
-    padding:40px;
-    border-radius:30px;
-    backdrop-filter:blur(15px);
-    background:rgba(0,0,0,.25);
-    border:2px solid rgba(255,255,255,.2);
+    animation:fadeIn 2s ease;
 }
 
-.menu h1{
-    font-size:56px;
-    text-shadow:0 0 20px #ff8fd3;
+h1{
+    font-size:70px;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 30px #ffb6c1;
 }
 
-.menu p{
-    font-size:24px;
+p{
     margin-top:20px;
+    font-size:24px;
+    color:#ffe6f2;
 }
 
 .btn{
     display:inline-block;
-    margin-top:35px;
-    padding:18px 60px;
-    background:linear-gradient(45deg,#ff4fa3,#ff79c8);
-    color:white;
+    margin-top:40px;
+    padding:16px 45px;
     text-decoration:none;
+    color:white;
+    font-size:22px;
     border-radius:50px;
-    font-size:24px;
-    font-weight:bold;
-    box-shadow:0 0 25px #ff4fa3;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.4);
+    backdrop-filter:blur(10px);
     transition:.3s;
 }
 
 .btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 45px #ff4fa3;
+    transform:scale(1.05);
+    background:rgba(255,182,193,.35);
+    box-shadow:0 0 25px pink;
+}
+
+#fade{
+    position:fixed;
+    inset:0;
+    background:black;
+    opacity:0;
+    pointer-events:none;
+    transition:.8s;
+    z-index:9999;
+}
+
+#fade.active{
+    opacity:1;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translate(-50%,-45%);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%);
+    }
 }
 
 @media (max-width:768px){
 
-    .menu{
-        width:90%;
-        padding:25px;
+    h1{
+        font-size:42px;
     }
 
-    .menu h1{
-        font-size:36px;
-    }
-
-    .menu p{
-        font-size:20px;
+    p{
+        font-size:18px;
     }
 
     .btn{
-        font-size:20px;
-        padding:15px 40px;
+        padding:14px 35px;
+        font-size:18px;
     }
 
-}#stars{
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.star{
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 0 10px white;
-    animation: blink 2s infinite alternate;
+body{
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-@keyframes blink{
-    from{
-        opacity: .2;
-        transform: scale(.5);
-    }
-    to{
-        opacity: 1;
-        transform: scale(1.5);
-    }
-}
-
-.heart{
-    position: absolute;
-    font-size: 30px;
-    pointer-events: none;
-    animation: heartFly 2s linear forwards;
-    z-index: 20;
-}
-
-@keyframes heartFly{
-    from{
-        opacity: 1;
-        transform: translate(-50%,-50%);
-    }
-    to{
-        opacity: 0;
-        transform: translate(-50%,-250px) scale(2);
-    }
-}
-.moon{
+.background{
     position:fixed;
-    top:60px;
-    right:80px;
+    inset:0;
+    background:url("images/welcome.jpg") center center/cover no-repeat;
+    z-index:-2;
+}
 
-    width:180px;
-    height:180px;
-
-    border-radius:50%;
-    background:radial-gradient(circle,#fffdf0,#ffe8b5);
-
-    box-shadow:
-        0 0 40px #fff,
-        0 0 90px #fff5c4,
-        0 0 150px #fff0a0;
-
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
     z-index:-1;
-}.tree{
-    position:fixed;
-    left:0;
-    bottom:0;
-
-    width:420px;
-
-    z-index:0;
-    pointer-events:none;
 }
-.message{
-    position:fixed;
 
-    top:18%;
+.content{
+    position:absolute;
+    top:50%;
     left:50%;
-
-    transform:translateX(-50%);
-
+    transform:translate(-50%,-50%);
+    text-align:center;
     color:white;
-    font-size:42px;
-    font-weight:bold;
+    animation:fadeIn 2s ease;
+}
 
+h1{
+    font-size:70px;
     text-shadow:
-        0 0 20px pink,
-        0 0 40px hotpink;
+        0 0 10px #fff,
+        0 0 30px #ffb6c1;
+}
 
+p{
+    margin-top:20px;
+    font-size:24px;
+    color:#ffe6f2;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:16px 45px;
+    text-decoration:none;
+    color:white;
+    font-size:22px;
+    border-radius:50px;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.4);
+    backdrop-filter:blur(10px);
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    background:rgba(255,182,193,.35);
+    box-shadow:0 0 25px pink;
+}
+
+#fade{
+    position:fixed;
+    inset:0;
+    background:black;
     opacity:0;
-
-    animation:showText 4s ease forwards;
-    animation-delay:2s;
-
-    z-index:15;
+    pointer-events:none;
+    transition:.8s;
+    z-index:9999;
 }
 
-@keyframes showText{
-
-0%{
-opacity:0;
-transform:translateX(-50%) translateY(-20px);
+#fade.active{
+    opacity:1;
 }
 
-100%{
-opacity:1;
-transform:translateX(-50%) translateY(0);
-}
-
-}
-.flash{
-
-position:fixed;
-inset:0;
-
-background:white;
-
-animation:flash 2s forwards;
-
-pointer-events:none;
-
-z-index:100;
-
-}
-
-@keyframes flash{
-
-0%{
-opacity:1;
-}
-
-100%{
-opacity:0;
-}
-
-}
-#fireflies {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 3;
-}
-
-.firefly {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: #fff7a8;
-    border-radius: 50%;
-    box-shadow:
-        0 0 10px #fff7a8,
-        0 0 20px #fff7a8,
-        0 0 35px #ffee55;
-    animation: fireflyBlink 2s infinite alternate;
-}
-
-@keyframes fireflyBlink {
-    from {
-        opacity: 0.2;
-        transform: scale(0.8);
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translate(-50%,-45%);
     }
-    to {
-        opacity: 1;
-        transform: scale(1.3);
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%);
     }
 }
 
-@keyframes fly{
+@media (max-width:768px){
 
-    0%{
-        transform:translate(0,0);
+    h1{
+        font-size:42px;
     }
 
-    25%{
-        transform:translate(40px,-60px);
+    p{
+        font-size:18px;
     }
 
-    50%{
-        transform:translate(-30px,-120px);
-    }
-
-    75%{
-        transform:translate(50px,-180px);
-    }
-
-    100%{
-        transform:translate(0,-250px);
+    .btn{
+        padding:14px 35px;
+        font-size:18px;
     }
 
 }
