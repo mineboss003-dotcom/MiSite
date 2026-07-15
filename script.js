@@ -89,3 +89,10 @@ if (fireflies) {
     }
 
 }
+const music = document.getElementById("bgMusic");
+
+document.addEventListener("click", () => {
+    if (music) {
+        music.play().catch(err => console.log(err));
+    }
+}, { once: true });
