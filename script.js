@@ -1,9 +1,19 @@
-document.addEventListener("click", function(e){
+// ===== Запуск музыки =====
+const music = document.getElementById("bgMusic");
+
+document.addEventListener("click", () => {
+    if (music && music.paused) {
+        music.play().catch(err => console.log(err));
+    }
+}, { once: true });
+
+
+// ===== Сердечки при клике =====
+document.addEventListener("click", function (e) {
 
     const heart = document.createElement("div");
 
-    heart.innerHTML = "💖";
-
+    heart.innerHTML = "❤️";
     heart.className = "heart";
 
     heart.style.left = e.pageX + "px";
@@ -11,25 +21,29 @@ document.addEventListener("click", function(e){
 
     document.body.appendChild(heart);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         heart.remove();
-    },2000);
-
+    }, 2000);
 });
+
+
+// ===== Создание звёзд =====
 const stars = document.getElementById("stars");
 
-for(let i=0;i<120;i++){
+if (stars) {
 
-    const star=document.createElement("div");
+    for (let i = 0; i < 120; i++) {
 
-    star.className="star";
+        const star = document.createElement("div");
 
-    star.style.left=Math.random()*100+"%";
+        star.className = "star";
 
-    star.style.top=Math.random()*100+"%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
 
-    star.style.animationDelay=Math.random()*2+"s";
+        star.style.animationDelay = Math.random() * 2 + "s";
 
-    stars.appendChild(star);
+        stars.appendChild(star);
+    }
 
 }
