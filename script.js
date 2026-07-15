@@ -1,87 +1,95 @@
-// ---------------- Музыка ----------------
+// ==========================
+// ПЛАВНЫЙ ПЕРЕХОД
+// ==========================
 
-const music = document.getElementById("bgMusic");
+const link = document.querySelector(".btn");
 
-document.addEventListener("click", () => {
-    if (music) {
-        music.play().catch(() => {});
-    }
-}, { once: true });
+if(link){
 
-
-// ---------------- Сердечки ----------------
-
-document.addEventListener("click", function (e) {
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-
-    heart.style.left = e.pageX + "px";
-    heart.style.top = e.pageY + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 2000);
-
-});
-
-
-// ---------------- Звёзды ----------------
-
-const stars = document.getElementById("stars");
-
-if (stars) {
-
-    for (let i = 0; i < 120; i++) {
-
-        const star = document.createElement("div");
-
-        star.className = "star";
-
-        star.style.left = Math.random() * 100 + "%";
-        star.style.top = Math.random() * 100 + "%";
-
-        star.style.animationDelay = Math.random() * 2 + "s";
-
-        stars.appendChild(star);
-    }
-
-}
-
-
-// ---------------- Переход между страницами ----------------
-
-const btn = document.querySelector(".btn");
-
-if (btn) {
-
-    btn.addEventListener("click", function (e) {
+    link.addEventListener("click", function(e){
 
         e.preventDefault();
 
+        const url = this.href;
+
         const fade = document.getElementById("fade");
 
-        if (fade) {
+        if(fade){
 
             fade.classList.add("active");
 
-            setTimeout(() => {
+            setTimeout(()=>{
 
-                window.location = btn.href;
+                window.location.href = url;
 
-            }, 800);
+            },800);
 
-        } else {
+        }else{
 
-            window.location = btn.href;
+            window.location.href = url;
 
         }
 
     });
 
 }
-``
+
+
+
+// ==========================
+// АВТОЗАПУСК МУЗЫКИ ПО КЛИКУ
+// ==========================
+
+const music = document.getElementById("bgMusic");
+
+
+document.addEventListener("click", function(){
+
+    if(music){
+
+        music.volume = 0.4;
+
+        music.play()
+        .catch(error=>{
+
+            console.log("Музыка ждёт разрешения браузера");
+
+        });
+
+    }
+
+});
+
+
+
+// ==========================
+// СЧЁТЧИК КЛИКОВ
+// ==========================
+
+document.addEventListener("click", function(e){
+
+
+    const heart = document.createElement("div");
+
+
+    heart.className="heart";
+
+    heart.innerHTML="❤️";
+
+
+    heart.style.left=e.pageX+"px";
+
+    heart.style.top=e.pageY+"px";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },2000);
+
+
+});
