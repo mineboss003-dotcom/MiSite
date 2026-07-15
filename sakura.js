@@ -2,7 +2,7 @@
 const petals = document.getElementById('petals');
 
 // Создаём лепестки
-for (let i = 0; i < 60; i++) {
+for (let i = 0; i < 1000; i++) {
     const petal = document.createElement('div');
 
     petal.className = 'petal';
