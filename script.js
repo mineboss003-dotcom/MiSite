@@ -62,3 +62,30 @@ if (btn) {
         }, 800);
     });
 }
+// ===== Светлячки =====
+
+const fireflies = document.getElementById("fireflies");
+
+if (fireflies) {
+
+    for (let i = 0; i < 35; i++) {
+
+        const firefly = document.createElement("div");
+
+        firefly.className = "firefly";
+
+        firefly.style.left = Math.random() * window.innerWidth + "px";
+        firefly.style.top = Math.random() * window.innerHeight + "px";
+
+        firefly.style.animationDuration =
+            (8 + Math.random() * 8) + "s, " +
+            (1.5 + Math.random()) + "s";
+
+        firefly.style.animationDelay =
+            Math.random() * 5 + "s";
+
+        fireflies.appendChild(firefly);
+
+    }
+
+}
